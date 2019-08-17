@@ -33,6 +33,29 @@ export default {
             "https://tholiday.thsrc.com.tw/agts_thw/list/theme/F122F198-2AD1-4177-846B-49E160F69C11?utm_source=thsrc&utm_medium=banner&utm_campaign=bleisure"
         }
       ],
+      tableData: [
+        {
+          date: "2019/08/16",
+          note: "台灣高鐵企業網站及部分票務系統2019/08/20~08/22 維護作業說明"
+        },
+        {
+          date: "2019/08/14",
+          note: "台灣高鐵2019中秋節假期疏運 加開143班次列車 8/16起開放購票"
+        },
+        {
+          date: "2019/08/13",
+          note: "台南豪雨公告"
+        },
+        {
+          date: "2019/08/12",
+          note: "台灣高鐵公司針對法人董事當然解任說明"
+        },
+        {
+          date: "2019/08/12",
+          note:
+            "網路訂票系統及自動語音訂位系統簡訊通知功能2019/08/13 (二) 01:00~05:00AM暫停服務"
+        }
+      ],
       topInfoPicHeight: 0
     };
   },

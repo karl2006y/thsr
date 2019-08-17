@@ -79,67 +79,82 @@
     </el-carousel-item>
   </el-carousel>
   <!-- 主界面按鈕 -->
-  <el-row style="background-color: #cfd1d2ad">
-    <el-col :offset="8" :span="8" class="text-center">
-      <buttonmain
-        size="1.2rem"
-        name="我要訂票"
-        pic="https://lh3.googleusercontent.com/nbEaXRVolam6hoYLKRdW8HIV_x9VE0rI9J-Es3TSy8pX3SwXoXuKa_sqfXAcF5lWkYh-yhYNfTS7wlKn-HGMjIt3vaJzlPkQHZPgUViZ4IFBmHQ7-RxiCn_Ot87b=w81"
-      ></buttonmain>
-    </el-col>
-  </el-row>
-  <el-row class="border border-white" style="background-color: #cfd1d2ad">
-    <el-col :span="7" :offset="1">
-      <buttonmain
-        style="padding-top:6px"
-        ph="30px;width: 20px;padding-top:10px"
-        name="時刻車次"
-        pic="https://lh5.googleusercontent.com/suG1DeE1nH9oY_LPu2xoTkMY7YfHeoJTOHwQMbjuYvw5pVzDKlvHLA8oMczK8tzrs1NttAUAvNX-iKArMEQNq3t1iC53gdkSCGk7GSgYzF0vStDyvYHxWRAxKTPl=w41"
-      ></buttonmain>
-    </el-col>
-    <el-col :span="8">
-      <buttonmain
-        style="padding-top:6px;padding-bottom:18px"
-        class="border-right border-left border-white pl-3"
-        ph="15px;width: 35px;padding-right:8px;margin-top:12px"
-        name="會員專區"
-        pic="https://lh3.googleusercontent.com/U1D4sl5M54l5PTfL-alAp7U24eDX2oNubEKgawlZ193wfNuap6KccuzlJBjz0XEBWWFDcb2lSJVVs5EF_qN3PvF09GWIFJ70H95AsVatkoY4aY8umvkkFFjtVRK1=w69"
-      ></buttonmain>
-    </el-col>
-    <el-col :span="7" :offset="1">
-      <buttonmain
-        style="padding-top:6px"
-        ph="45px"
-        name="我的車票"
-        pic="https://lh4.googleusercontent.com/JHIbSb7Ouiy3V2vr2Z7hh5DbbbMFHorKOv1KS5y2fAg6ZNLiqqaqj0ViSuLndA0UAaCG3vqboztLLHrcC9Jv7HduwM-IPSm0PeH9l6HNN46qRlt8690d04TLSvJa=w87"
-      ></buttonmain>
-    </el-col>
-  </el-row>
-  <el-row class="border border-white" style="background-color: #cfd1d2ad; ">
-    <el-col :span="7" :offset="1">
-      <buttonmain
-        style="padding-bottom:12px;padding-top:9px"
-        ph="30px;width: 20px;padding-top:10px"
-        name="車站資訊"
-        pic="https://lh5.googleusercontent.com/Yde76FnpfrIzC3GwSgoLhzEhLSSAsp8Hbz81YWAd6mETwDmW1G5ww4EABJqygmNm5sz7yfdJsLXe3xaPV4kWwbtx9RFP0zBolQDrOOF0mRdTJQIeJi3Jqysj10Oy=w45"
-      ></buttonmain>
-    </el-col>
-    <el-col :span="8">
-      <buttonmain
-        style="padding-bottom:12px;padding-top:9px"
-        class="border-right border-left border-white pl-3"
-        ph="30px;width: 20px;padding-top:10px"
-        name="便利轉乘"
-        pic="https://lh3.googleusercontent.com/S5KpJyf1WQWDSufKW7swssjldr2dzQnahKNKBEPq4tJiylwb8wQqJOjZYKqaU7aWVH4hO6TjLuuF8CzyB6g1ErFJ1ncXnuofUGQkGve2UpqjCwCFPKxb0r9tgwr8=w41"
-      ></buttonmain>
-    </el-col>
-    <el-col :span="7" :offset="1">
-      <buttonmain
-        style="padding-bottom:12px;padding-top:9px"
-        ph="30px;width: 20px;padding-top:10px;margin-right:5px"
-        name="精選推薦"
-        pic="https://lh5.googleusercontent.com/0gtRaOELpTRKy9S_dmXoI54aJt_qfH2GhJ5xUYatLR0gdFUdxoCa4YDpYb0cUllSl5VtAY2jLGRj0uXG-xlZuISuvl9OENciGZShO5iiFpj7YI8NzakGQ3pIZ76J=w52"
-      ></buttonmain>
-    </el-col>
-  </el-row>
+  <div>
+    <el-row style="background-color: #cfd1d2ad">
+      <el-col :offset="8" :span="8" class="text-center">
+        <buttonmain
+          size="1.2rem"
+          name="我要訂票"
+          pic="https://lh3.googleusercontent.com/nbEaXRVolam6hoYLKRdW8HIV_x9VE0rI9J-Es3TSy8pX3SwXoXuKa_sqfXAcF5lWkYh-yhYNfTS7wlKn-HGMjIt3vaJzlPkQHZPgUViZ4IFBmHQ7-RxiCn_Ot87b=w81"
+        ></buttonmain>
+      </el-col>
+    </el-row>
+    <el-row class="border border-white" style="background-color: #cfd1d2ad">
+      <el-col :span="7" :offset="1">
+        <buttonmain
+          style="padding-top:6px"
+          ph="30px;width: 20px;padding-top:10px"
+          name="時刻車次"
+          pic="https://lh5.googleusercontent.com/suG1DeE1nH9oY_LPu2xoTkMY7YfHeoJTOHwQMbjuYvw5pVzDKlvHLA8oMczK8tzrs1NttAUAvNX-iKArMEQNq3t1iC53gdkSCGk7GSgYzF0vStDyvYHxWRAxKTPl=w41"
+        ></buttonmain>
+      </el-col>
+      <el-col :span="8">
+        <buttonmain
+          style="padding-top:6px;padding-bottom:18px"
+          class="border-right border-left border-white pl-3"
+          ph="15px;width: 35px;padding-right:8px;margin-top:12px"
+          name="會員專區"
+          pic="https://lh3.googleusercontent.com/U1D4sl5M54l5PTfL-alAp7U24eDX2oNubEKgawlZ193wfNuap6KccuzlJBjz0XEBWWFDcb2lSJVVs5EF_qN3PvF09GWIFJ70H95AsVatkoY4aY8umvkkFFjtVRK1=w69"
+        ></buttonmain>
+      </el-col>
+      <el-col :span="7" :offset="1">
+        <buttonmain
+          style="padding-top:6px"
+          ph="45px"
+          name="我的車票"
+          pic="https://lh4.googleusercontent.com/JHIbSb7Ouiy3V2vr2Z7hh5DbbbMFHorKOv1KS5y2fAg6ZNLiqqaqj0ViSuLndA0UAaCG3vqboztLLHrcC9Jv7HduwM-IPSm0PeH9l6HNN46qRlt8690d04TLSvJa=w87"
+        ></buttonmain>
+      </el-col>
+    </el-row>
+    <el-row class="border border-white" style="background-color: #cfd1d2ad; ">
+      <el-col :span="7" :offset="1">
+        <buttonmain
+          style="padding-bottom:12px;padding-top:9px"
+          ph="30px;width: 20px;padding-top:10px"
+          name="車站資訊"
+          pic="https://lh5.googleusercontent.com/Yde76FnpfrIzC3GwSgoLhzEhLSSAsp8Hbz81YWAd6mETwDmW1G5ww4EABJqygmNm5sz7yfdJsLXe3xaPV4kWwbtx9RFP0zBolQDrOOF0mRdTJQIeJi3Jqysj10Oy=w45"
+        ></buttonmain>
+      </el-col>
+      <el-col :span="8">
+        <buttonmain
+          style="padding-bottom:12px;padding-top:9px"
+          class="border-right border-left border-white pl-3"
+          ph="30px;width: 20px;padding-top:10px"
+          name="便利轉乘"
+          pic="https://lh3.googleusercontent.com/S5KpJyf1WQWDSufKW7swssjldr2dzQnahKNKBEPq4tJiylwb8wQqJOjZYKqaU7aWVH4hO6TjLuuF8CzyB6g1ErFJ1ncXnuofUGQkGve2UpqjCwCFPKxb0r9tgwr8=w41"
+        ></buttonmain>
+      </el-col>
+      <el-col :span="7" :offset="1">
+        <buttonmain
+          style="padding-bottom:12px;padding-top:9px"
+          ph="30px;width: 20px;padding-top:10px;margin-right:5px"
+          name="精選推薦"
+          pic="https://lh5.googleusercontent.com/0gtRaOELpTRKy9S_dmXoI54aJt_qfH2GhJ5xUYatLR0gdFUdxoCa4YDpYb0cUllSl5VtAY2jLGRj0uXG-xlZuISuvl9OENciGZShO5iiFpj7YI8NzakGQ3pIZ76J=w52"
+        ></buttonmain>
+      </el-col>
+    </el-row>
+  </div>
+  <!-- 最新消息  -->
+  <p></p>
+
+  <el-image
+    class=""
+    style="width: 168px; "
+    src="https://lh4.googleusercontent.com/9ZlPcPxrrcy2xvW2-WPMDe1HcFF6-KU-GM-pUrP7T2yYdKYhPmQCT_fwy04tHjUWX0jHds2nJMCM54fioUfkJ-rd8Lh74ZM54-AwGVJsjsP_M4rx6iNyrBBpStzs=w265"
+  >
+  </el-image>
+  <el-table :data="tableData" style="width: 100%">
+    <el-table-column prop="date" label="日期" width="100"> </el-table-column>
+    <el-table-column prop="note" label="內容"> </el-table-column>
+  </el-table>
 </div>
