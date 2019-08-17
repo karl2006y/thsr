@@ -6,8 +6,6 @@ import './plugins/element.js'
 import 'bootstrap/scss/bootstrap.scss'
 import 'bootstrap'
 
-Vue.config.productionTip = false
-
 new Vue({
   router,
   render: h => h(App)
