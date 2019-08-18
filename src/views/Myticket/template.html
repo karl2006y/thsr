@@ -1,0 +1,106 @@
+<div
+  class="myticket animated fast mb-1"
+  :class="goback?'fadeOutRight':'slideInRight'"
+  style="min-height: calc(100vh - 55px); "
+>
+  <el-page-header
+    @back="gobackHandler()"
+    class="text-white"
+    style="height: 62px;background-color: #444444;"
+  >
+    <div slot="title"></div>
+    <div
+      slot="content"
+      class="text-white text-center "
+      style="padding-top: 20px"
+    >
+      我的車票
+    </div>
+    <!-- 上面tab -->
+  </el-page-header>
+  <el-tabs v-model="tabActiveName" class="ml-2">
+    <el-tab-pane label="未使用車票" name="未使用車票">
+      <div class="text-right mr-4">共 {{ tickets.length }} 張車票</div>
+      <el-image
+        v-for="item in tickets"
+        class="border my-2"
+        :src="item.pic"
+      ></el-image>
+    </el-tab-pane>
+    <el-tab-pane label="歷史紀錄" name="歷史紀錄">
+      <div class="text-right mr-4">共 {{ tickets.length }} 張車票</div>
+      <div v-for="item in tickets">
+        <span
+          class="rounded-circle px-2 "
+          :class="item.status=='未取票'?'bg-danger':'bg-success'"
+          style="width: 15px;height:15px "
+        >
+        </span>
+        <div class="ml-1 d-inline">{{ item.status }}</div>
+
+        <el-image class="border my-2" :src="item.pic"></el-image>
+        <el-divider></el-divider>
+      </div>
+    </el-tab-pane>
+    <el-tab-pane label="擷取紀錄" name="擷取紀錄">
+      <div class="ml-2 mr-4">
+        <el-form label-position="top">
+          <el-form-item label="訂位代號">
+            <el-input></el-input>
+            <a href="javascript:;">忘記訂位代號</a>
+          </el-form-item>
+          <el-form-item label="身分證字號或護照後四碼">
+            <el-input></el-input>
+          </el-form-item>
+          <el-form-item label="功能說明">
+            <div>
+              本功能可將高鐵網站、語音訂位紀錄擷取
+              至手機上付款或取票,請輸入您的訂位代
+              號共8碼,及訂位時使用的身分證或護照號 碼末4碼。
+            </div>
+          </el-form-item>
+        </el-form>
+        <div class="text-center">
+          <el-button class="px-5" type="primary">送出</el-button>
+        </div>
+      </div>
+    </el-tab-pane>
+    <el-tab-pane label="購票證明" name="購票證明">
+      <div class="ml-2 mr-4">
+        <el-radio-group v-model="typeRadio" class="mt-1">
+          <el-radio-button label="一般查詢列應"></el-radio-button>
+          <el-radio-button label="電子車票證明"></el-radio-button>
+        </el-radio-group>
+        <el-input>
+          <template slot="prepend"
+            >票卷號碼</template
+          >
+        </el-input>
+        <el-input>
+          <template slot="prepend"
+            >電子郵件</template
+          >
+        </el-input>
+        <el-form label-position="top">
+          <el-form-item label="功能說明">
+            <div>
+              1.「一般查詢列印」提供手機票證自開票日次
+              日至乘車日起一年內之購票證明。
+            </div>
+            <div>
+              2.「電子車票證明」提供手機票證自預定列車
+              發車日期後兩日起五年內之購票證明,此為
+              報稅扣抵用之憑證,僅能下載乙次。
+            </div>
+            <div>
+              3.購票證明將寄送至上述電子郵件信箱,請確 認輸入資料之正確性。
+            </div>
+          </el-form-item>
+        </el-form>
+        <div class="text-center">
+          <el-button class="mt-2 px-5" type="primary">送出</el-button>
+        </div>
+      </div>
+    </el-tab-pane>
+  </el-tabs>
+</div>

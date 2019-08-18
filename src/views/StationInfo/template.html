@@ -1,0 +1,80 @@
+<div
+  class="stationInfo animated fast mb-1"
+  :class="goback?'fadeOutRight':'slideInRight'"
+  style="min-height: calc(100vh - 55px); "
+>
+  <el-page-header
+    @back="gobackHandler()"
+    class="text-white"
+    style="height: 62px;background-color: #444444;"
+  >
+    <div slot="title"></div>
+    <div
+      slot="content"
+      class="text-white text-center "
+      style="padding-top: 20px"
+    >
+      車站資訊
+    </div>
+  </el-page-header>
+  <el-radio-group v-model="mapTypeRadio" class="mt-1 ml-1">
+    <el-radio-button label="服務設施"></el-radio-button>
+    <el-radio-button label="餐飲及購物服務"></el-radio-button>
+  </el-radio-group>
+  <div style="width: 100vw;height: calc(100vw/2+1px);">
+    <el-image v-loading="loading" class="border" :src="picUrl">
+      <div slot="placeholder" class="image-slot p-5">
+        載入中<span class="dot">...</span>
+      </div>
+    </el-image>
+  </div>
+  <div class="text-right">
+    <small class="mr-3 text-secondary">車站大廳2F</small>
+  </div>
+
+  <div class="ml-3 mb-3">點擊圖像尋找位置</div>
+  <div v-if="mapTypeRadio=='服務設施'">
+    <el-row class="mr-3">
+      <el-col class="mt-1" :span="5" :offset="1" v-for="item in options">
+        <div class="text-center border" @click="clickOption(item)">
+          <el-image
+            class=" p-1"
+            style="width: 38px; height:38px;white-space:nowrap; "
+            :style="item.show?'background-color:orange;':''"
+            :src="item.icon"
+          >
+          </el-image>
+          <h6
+            style="font-size:1px"
+            :style="item.name2!=undefined?'margin-bottom:0':''"
+          >
+            {{ item.name }}
+          </h6>
+          <h6 v-if="item.name2" style="font-size:1px">
+            {{ item.name2 }}
+          </h6>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
+  <div v-if="mapTypeRadio=='餐飲及購物服務'">
+    <el-row class="mr-3">
+      <el-col class="mt-1" :span="5" :offset="1" v-for="item in options2">
+        <div class="text-center border" @click="clickOption(item)">
+          <el-image
+            class=" p-1"
+            :style="item.show?'background-color:orange;':''"
+            :src="item.icon"
+          >
+          </el-image>
+          <h6 :style="item.name2!=undefined?'margin-bottom:0':''">
+            {{ item.name }}
+          </h6>
+          <h6 v-if="item.name2">
+            {{ item.name2 }}
+          </h6>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
+</div>

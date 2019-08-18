@@ -1,4 +1,7 @@
-<div class="home">
+<div
+  class="home mb-1 animated fadeIn fast"
+  style="min-height: calc(100vh - 55px); "
+>
   <!-- 最上面的navbar -->
   <div class="text-center" style=" background-color: #444444">
     <div style="  position: absolute; width: 50px; height: 50px ;top:15px">
@@ -32,71 +35,215 @@
       </el-image>
     </div>
     <el-menu
-      default-active="2"
+      default-active="1-1"
       class="el-menu-vertical-demo h-100 "
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b"
       style="width:120vw"
+      :collapse="false"
     >
       <el-submenu index="1">
         <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>导航一</span>
+          <i class="el-icon-s-ticket"></i>
+          <span>我的車票</span>
         </template>
         <el-menu-item-group>
-          <template slot="title"
-            >分组一</template
+          <el-menu-item index="1-1">
+            <i class="el-icon-takeaway-box"></i>
+            尚未使用車票</el-menu-item
           >
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="1-4">
-          <template slot="title"
-            >选项4</template
+          <el-menu-item index="1-2">
+            <i class="el-icon-notebook-1"></i>
+            歷史紀錄</el-menu-item
           >
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
-        </el-submenu>
+          <el-menu-item index="1-3">
+            <i class="el-icon-postcard"></i>
+            購票證明</el-menu-item
+          >
+        </el-menu-item-group>
       </el-submenu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <span slot="title">导航二</span>
+      <el-submenu index="2">
+        <template slot="title">
+          <i class="el-icon-star-on"></i>
+          <span>精選推薦</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="2-1">
+            <i class="el-icon-s-goods"></i>
+            高鐵假期</el-menu-item
+          >
+          <el-menu-item index="2-2">
+            <i class="el-icon-document-copy"></i>
+            交通聯票</el-menu-item
+          >
+          <el-menu-item index="2-3">
+            <i class="el-icon-s-check"></i>
+            活動套票</el-menu-item
+          >
+        </el-menu-item-group>
+      </el-submenu>
+      <el-menu-item index="3">
+        <i
+          class="far fa-calendar-check"
+          style="margin-left: 5px;margin-right: 10px"
+        ></i>
+        <span slot="title">定期/回數票</span>
+      </el-menu-item>
+      <el-menu-item index="4">
+        <i class="fas fa-tags" style="margin-left: 5px;margin-right: 10px"></i>
+        <span slot="title">購票優惠</span>
+      </el-menu-item>
+      <el-menu-item index="5">
+        <i
+          class="fas fa-wheelchair"
+          style="margin-left: 5px;margin-right: 10px"
+        ></i>
+        <span slot="title">無障礙服務</span>
+      </el-menu-item>
+      <el-menu-item index="6">
+        <i class="fas fa-users" style="margin-left: 5px;margin-right: 10px"></i>
+        <span slot="title">粉絲專區</span>
+      </el-menu-item>
+      <el-menu-item index="7">
+        <i
+          class="far fa-thumbs-up"
+          style="margin-left: 5px;margin-right: 10px"
+        ></i>
+        <span slot="title">T-Life</span>
+      </el-menu-item>
+      <el-menu-item index="8">
+        <i
+          class="fas fa-subway"
+          style="margin-left: 5px;margin-right: 10px"
+        ></i>
+        <span slot="title">高鐵好物</span>
+      </el-menu-item>
+      <el-menu-item index="9">
+        <div @click="innerDrawer=true">
+          <i class="el-icon-s-tools"></i>
+          <span slot="title">設定</span>
+        </div>
       </el-menu-item>
     </el-menu>
+    <el-drawer
+      :append-to-body="true"
+      :visible.sync="innerDrawer"
+      direction="ltr"
+      size="100%"
+    >
+      <div slot="title">
+        <i class="el-icon-s-tools"></i>
+        <span> 設定</span>
+      </div>
+      <div class="ml-3 mr-2">
+        <el-collapse>
+          <el-collapse-item title="變更語言" name="1">
+            <el-radio-group v-model="setting.lanRadio" size="medium">
+              <el-radio-button label="中文"></el-radio-button>
+              <el-radio-button label="English"></el-radio-button>
+              <el-radio-button label="にほんご"></el-radio-button>
+            </el-radio-group>
+          </el-collapse-item>
+          <el-collapse-item title="字體大小" name="2">
+            <el-radio-group v-model="setting.fontSize" size="medium">
+              <el-radio-button label="極大"></el-radio-button>
+              <el-radio-button label="大"></el-radio-button>
+              <el-radio-button label="適中"></el-radio-button>
+            </el-radio-group>
+          </el-collapse-item>
+          <el-collapse-item title="使用說明" name="3">
+            <el-form label-position="right" label-width="80px">
+              <el-form-item label="注意事項">
+                <div>
+                  1.
+                  本系統提供預訂當日及未來28日以內之車票。訂位開放時間為乘車日(含)前28日凌晨0點開始，當日車次之預訂僅受理至列車出發時間前1小時為止(如因特殊事由調整開放時間，本公司將另行公告)。
+                </div>
+                <div>
+                  2.
+                  每筆交易至多可預訂10張票，不限身份，去回程至多可預訂各5張。購買孩童票之兒童乘車時，建議至少需有一位成人同行為宜。
+                </div>
+                <div>
+                  3.
+                  為維護您的權益，請於規定時間內完成付款。如未完成付款，本系統將自動取消訂位。
+                </div>
+                <div class="text-danger">
+                  4.
+                  座位喜好功能係依列車訂位概況媒合您期望的座位，如該車次已無合適座位時，為讓您仍可順利完成訂票作業，將由系統自動配置座位。座位喜好功能僅適用於單人乘客。
+                </div>
+              </el-form-item>
+            </el-form>
+          </el-collapse-item>
+          <el-collapse-item title="關於我們" name="4">
+            <div>
+              about
+            </div>
+          </el-collapse-item>
+        </el-collapse>
+      </div>
+    </el-drawer>
   </el-drawer>
-  <!--運作狀況 -->
-  <div class="text-center py-2" style=" background-color: #67C23A;">
+  <!--運作狀況全線運作正常 -->
+  <div
+    @click="statusSuccess=false"
+    v-if="statusSuccess"
+    class="text-center py-2"
+    style=" background-color: #67C23A;"
+  >
     <i style="font-size: 1.3rem" class="el-icon-circle-check text-white"></i>
     <span class="text-white"> 全線運作正常</span>
   </div>
   <!--輪播圖片 -->
-  <el-carousel :height="topInfoPicHeight+'px'">
+  <el-carousel v-if="statusSuccess" :height="topInfoPicHeight+'px'">
     <el-carousel-item v-for="item in topInfoPics" :key="item.pic">
       <el-image :src="item.pic"> </el-image>
     </el-carousel-item>
   </el-carousel>
+  <!--運作狀況部分區間延誤 -->
+  <div
+    @click="statusSuccess=true"
+    v-if="!statusSuccess"
+    class="text-center py-2"
+    style=" background-color: #E6A23C;"
+  >
+    <i
+      style="font-size: 1.3rem"
+      class=" el-icon-warning-outline text-white"
+    ></i>
+
+    <span class="text-white"> 部分區間延誤</span>
+  </div>
+  <el-image
+    v-if="!statusSuccess"
+    fit="cover"
+    style="width: 102vw; "
+    :style="'height:'+topInfoPicHeight+ 'px;' "
+    src=" https://lh3.googleusercontent.com/97oDSN_lKe4ggLKG0hDK0IvtTuXxrKkZnCbaRLITIj-KS5aeZt9MyyudCqpHLr_ahX0tCTAQJ04encDwzDVwLpsHH_oaiN33MbKgrXEkYJwR4WoxePPT42no0QV6=w760"
+  >
+  </el-image>
   <!-- 主界面按鈕 -->
-  <div>
+  <div class="">
     <el-row style="background-color: #cfd1d2ad">
       <el-col :offset="8" :span="8" class="text-center">
-        <buttonmain
-          size="1.2rem"
-          name="我要訂票"
-          pic="https://lh3.googleusercontent.com/nbEaXRVolam6hoYLKRdW8HIV_x9VE0rI9J-Es3TSy8pX3SwXoXuKa_sqfXAcF5lWkYh-yhYNfTS7wlKn-HGMjIt3vaJzlPkQHZPgUViZ4IFBmHQ7-RxiCn_Ot87b=w81"
-        ></buttonmain>
+        <div @click="$router.push({ name: '我要訂票'})">
+          <buttonmain
+            size="1.2rem"
+            name="我要訂票"
+            pic="https://lh3.googleusercontent.com/nbEaXRVolam6hoYLKRdW8HIV_x9VE0rI9J-Es3TSy8pX3SwXoXuKa_sqfXAcF5lWkYh-yhYNfTS7wlKn-HGMjIt3vaJzlPkQHZPgUViZ4IFBmHQ7-RxiCn_Ot87b=w81"
+          ></buttonmain>
+        </div>
       </el-col>
     </el-row>
     <el-row class="border border-white" style="background-color: #cfd1d2ad">
       <el-col :span="7" :offset="1">
-        <buttonmain
-          style="padding-top:6px"
-          ph="30px;width: 20px;padding-top:10px"
-          name="時刻車次"
-          pic="https://lh5.googleusercontent.com/suG1DeE1nH9oY_LPu2xoTkMY7YfHeoJTOHwQMbjuYvw5pVzDKlvHLA8oMczK8tzrs1NttAUAvNX-iKArMEQNq3t1iC53gdkSCGk7GSgYzF0vStDyvYHxWRAxKTPl=w41"
-        ></buttonmain>
+        <div @click="$router.push({ name: '時刻車次'})">
+          <buttonmain
+            style="padding-top:6px"
+            ph="30px;width: 20px;padding-top:10px"
+            name="時刻車次"
+            pic="https://lh5.googleusercontent.com/suG1DeE1nH9oY_LPu2xoTkMY7YfHeoJTOHwQMbjuYvw5pVzDKlvHLA8oMczK8tzrs1NttAUAvNX-iKArMEQNq3t1iC53gdkSCGk7GSgYzF0vStDyvYHxWRAxKTPl=w41"
+          ></buttonmain>
+        </div>
       </el-col>
       <el-col :span="8">
         <buttonmain
@@ -108,22 +255,26 @@
         ></buttonmain>
       </el-col>
       <el-col :span="7" :offset="1">
-        <buttonmain
-          style="padding-top:6px"
-          ph="45px"
-          name="我的車票"
-          pic="https://lh4.googleusercontent.com/JHIbSb7Ouiy3V2vr2Z7hh5DbbbMFHorKOv1KS5y2fAg6ZNLiqqaqj0ViSuLndA0UAaCG3vqboztLLHrcC9Jv7HduwM-IPSm0PeH9l6HNN46qRlt8690d04TLSvJa=w87"
-        ></buttonmain>
+        <div @click="$router.push({ name: '我的車票'})">
+          <buttonmain
+            style="padding-top:6px"
+            ph="45px"
+            name="我的車票"
+            pic="https://lh4.googleusercontent.com/JHIbSb7Ouiy3V2vr2Z7hh5DbbbMFHorKOv1KS5y2fAg6ZNLiqqaqj0ViSuLndA0UAaCG3vqboztLLHrcC9Jv7HduwM-IPSm0PeH9l6HNN46qRlt8690d04TLSvJa=w87"
+          ></buttonmain>
+        </div>
       </el-col>
     </el-row>
     <el-row class="border border-white" style="background-color: #cfd1d2ad; ">
       <el-col :span="7" :offset="1">
-        <buttonmain
-          style="padding-bottom:12px;padding-top:9px"
-          ph="30px;width: 20px;padding-top:10px"
-          name="車站資訊"
-          pic="https://lh5.googleusercontent.com/Yde76FnpfrIzC3GwSgoLhzEhLSSAsp8Hbz81YWAd6mETwDmW1G5ww4EABJqygmNm5sz7yfdJsLXe3xaPV4kWwbtx9RFP0zBolQDrOOF0mRdTJQIeJi3Jqysj10Oy=w45"
-        ></buttonmain>
+        <div @click="$router.push({ name: '車站資訊'})">
+          <buttonmain
+            style="padding-bottom:12px;padding-top:9px"
+            ph="30px;width: 20px;padding-top:10px"
+            name="車站資訊"
+            pic="https://lh5.googleusercontent.com/Yde76FnpfrIzC3GwSgoLhzEhLSSAsp8Hbz81YWAd6mETwDmW1G5ww4EABJqygmNm5sz7yfdJsLXe3xaPV4kWwbtx9RFP0zBolQDrOOF0mRdTJQIeJi3Jqysj10Oy=w45"
+          ></buttonmain>
+        </div>
       </el-col>
       <el-col :span="8">
         <buttonmain
@@ -145,16 +296,54 @@
     </el-row>
   </div>
   <!-- 最新消息  -->
-  <p></p>
-
-  <el-image
-    class=""
-    style="width: 168px; "
-    src="https://lh4.googleusercontent.com/9ZlPcPxrrcy2xvW2-WPMDe1HcFF6-KU-GM-pUrP7T2yYdKYhPmQCT_fwy04tHjUWX0jHds2nJMCM54fioUfkJ-rd8Lh74ZM54-AwGVJsjsP_M4rx6iNyrBBpStzs=w265"
-  >
-  </el-image>
-  <el-table :data="tableData" style="width: 100%">
-    <el-table-column prop="date" label="日期" width="100"> </el-table-column>
-    <el-table-column prop="note" label="內容"> </el-table-column>
-  </el-table>
+  <div>
+    <p></p>
+    <el-image
+      style="width: 168px; "
+      src="https://lh4.googleusercontent.com/9ZlPcPxrrcy2xvW2-WPMDe1HcFF6-KU-GM-pUrP7T2yYdKYhPmQCT_fwy04tHjUWX0jHds2nJMCM54fioUfkJ-rd8Lh74ZM54-AwGVJsjsP_M4rx6iNyrBBpStzs=w265"
+    >
+    </el-image>
+    <el-table :data="tableData" style="width: 100%">
+      <el-table-column prop="date" label="日期" width="100"> </el-table-column>
+      <el-table-column prop="note" label="內容"> </el-table-column>
+    </el-table>
+  </div>
+  <!-- 專屬好康  -->
+  <div>
+    <p></p>
+    <el-image
+      style="width: 168px; "
+      src="https://lh6.googleusercontent.com/Ni9Izz1isa-Beat-HNCQZUI-hEIrRcGk8JPp0WhDw7Mm-F9g2qcWG4b8yotgXrWMCKnufm0kj3Cfz2WsIfDZ_C0sEGZQ2y7PIXdjuYyQAVVPRiP7kW_9AK0z1Dbq=w274"
+    >
+    </el-image>
+    <el-table :data="onlyForUTableData" style="width: 100%">
+      <el-table-column prop="date" label="日期" width="100"> </el-table-column>
+      <el-table-column prop="note" label="內容"> </el-table-column>
+    </el-table>
+  </div>
+  <!-- 精選推薦  -->
+  <div>
+    <p></p>
+    <el-image
+      style="width: 168px; "
+      src="https://lh6.googleusercontent.com/HjaEReWcd1mJsM0Cny9sRk01tHeXZPSlE0Bg0m3ldsGbu4tELJAA6wIe0E95l_Bvo90Awruy6rfoCmbjaEkyQFbIZwUHVV3nGlcvan60xaTw6Pe7mX_C5FuoJzFp=w274"
+    >
+    </el-image>
+    <el-carousel
+      :interval="4000"
+      type="card"
+      height="200px"
+      indicator-position="none"
+    >
+      <el-carousel-item v-for="item in bottomInfoPics" :key="item.pic">
+        <div
+          class="w-100 text-white text-center"
+          style="background-color: #444444"
+        >
+          <el-image :src="item.pic"> </el-image>
+          <div class="pb-2">{{ item.text }}</div>
+        </div>
+      </el-carousel-item>
+    </el-carousel>
+  </div>
 </div>

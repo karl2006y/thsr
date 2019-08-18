@@ -7,7 +7,14 @@ export default {
   },
   data() {
     return {
+      setting: {
+        lanRadio: "中文",
+        fontSize: "適中"
+      },
+      statusSuccess: true,
       leftMenuShow: false,
+      innerDrawer: false,
+      topInfoPicHeight: 0,
       topInfoPics: [
         {
           pic:
@@ -56,7 +63,35 @@ export default {
             "網路訂票系統及自動語音訂位系統簡訊通知功能2019/08/13 (二) 01:00~05:00AM暫停服務"
         }
       ],
-      topInfoPicHeight: 0
+      onlyForUTableData: [
+        {
+          date: "2019/08/01",
+          note: "加購租車任你遊 上網一指搞定 超值優惠6折起"
+        }
+      ],
+
+      bottomInfoPics: [
+        {
+          pic:
+            "http://tholiday.thsrc.com.tw/agts_thw/THWImg/AABBBD3C-42BE-4929-9394-A9663E5127F3.jpg",
+          text: "【搭高鐵送住宿】和逸飯店．高雄中山館2日自由行"
+        },
+        {
+          pic:
+            "http://tholiday.thsrc.com.tw/agts_thw/THWImg/BCEF3D0C-8344-4D1E-A06E-3B3835A9956E.jpg",
+          text: "高雄義大遊樂世界1日輕鬆遊"
+        },
+        {
+          pic:
+            "http://tholiday.thsrc.com.tw/agts_thw/THWImg/D031DF49-95D1-4695-968D-12BCF910A06D.jpg",
+          text: "【搭商務送五星】嘉義耐斯王子大飯店2日自由行"
+        },
+        {
+          pic:
+            "http://tholiday.thsrc.com.tw/agts_thw/THWImg/589FAD56-561C-4DFB-ADF4-91193D10D40A.jpg",
+          text: "【下班玩更省】高雄文賓大飯店 駁二館2日自由行"
+        }
+      ]
     };
   },
   mounted() {

@@ -1,0 +1,56 @@
+<div
+  class="timeTable animated fast mb-1"
+  :class="goback?'fadeOutRight':'slideInRight'"
+>
+  <div style="min-height: calc(100vh - 100px); ">
+    <el-page-header
+      @back="gobackHandler()"
+      class="text-white"
+      style="height: 62px;background-color: #444444;"
+    >
+      <div slot="title"></div>
+      <div
+        slot="content"
+        class="text-white text-center "
+        style="padding-top: 20px"
+      >
+        時刻車次
+      </div>
+      <!-- 上面tab -->
+    </el-page-header>
+    <el-table :data="tableData" style="width: 100vw">
+      <el-table-column prop="delay" label="訂票">
+        <template slot-scope="scope">
+          <el-button
+            size="mini"
+            type="primary"
+            v-if="scope.row.delay!=undefined"
+            @click="alertDelay(scope.row.trainNum)"
+            >訂票</el-button
+          >
+          <el-button size="mini" type="primary" v-else>訂票</el-button>
+        </template>
+      </el-table-column>
+      <el-table-column prop="trainNum" label="車次"> </el-table-column>
+      <el-table-column prop="start" label="桃園"> </el-table-column>
+      <el-table-column prop="end" label="台中"> </el-table-column>
+      <el-table-column prop="delay">
+        <template slot="header" slot-scope="scope">
+          <div class="text-danger">延誤</div>
+        </template>
+        <template slot-scope="scope">
+          <div class="text-danger ml-2">{{ scope.row.delay }}</div>
+        </template>
+      </el-table-column>
+      <el-table-column prop="alltime" label="行車時間"> </el-table-column>
+    </el-table>
+  </div>
+  <div class="text-center">
+    <el-button-group>
+      <el-button type="primary" icon="el-icon-arrow-left">較早車次</el-button>
+      <el-button type="primary"
+        >較晚車次<i class="el-icon-arrow-right el-icon--right"></i
+      ></el-button>
+    </el-button-group>
+  </div>
+</div>

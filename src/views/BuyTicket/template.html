@@ -1,0 +1,200 @@
+<div
+  class="buyTicket animated fast mb-1"
+  :class="goback?'fadeOutRight':'slideInRight'"
+  style="min-height: calc(100vh - 55px); "
+>
+  <el-page-header
+    @back="gobackHandler()"
+    class="text-white"
+    style="height: 62px;background-color: #444444;"
+  >
+    <div slot="title"></div>
+    <div
+      slot="content"
+      class="text-white text-center "
+      style="padding-top: 20px"
+    >
+      我要訂票
+    </div>
+    <!-- 上面tab -->
+  </el-page-header>
+  <el-divider></el-divider>
+
+  <div class="ml-2 mr-3 mt-2">
+    <el-form label-position="right" label-width="80px">
+      <el-form-item label="起訖車站">
+        <el-select
+          v-model="value"
+          placeholder="起站"
+          style="width: calc((100vw - 120px)/2)"
+        >
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          >
+          </el-option>
+        </el-select>
+        →
+        <el-select
+          v-model="value2"
+          placeholder="訖站"
+          style="width: calc((100vw - 120px)/2)"
+        >
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          >
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="去/回程">
+        <el-radio-group v-model="goBackRadio" class="mt-1">
+          <el-radio-button label="單程票"></el-radio-button>
+          <el-radio-button label="去回票"></el-radio-button>
+        </el-radio-group>
+      </el-form-item>
+      <el-form-item label="車廂種類">
+        <el-radio-group v-model="trainRadio" class="mt-1">
+          <el-radio-button label="標準"></el-radio-button>
+          <el-radio-button label="商務"></el-radio-button>
+          <el-radio-button label="自由座"></el-radio-button>
+        </el-radio-group>
+      </el-form-item>
+      <el-form-item label="座位喜好">
+        <el-radio-group v-model="seatRadio" class="mt-1">
+          <el-radio-button label="無"></el-radio-button>
+          <el-radio-button label="請選擇"></el-radio-button>
+        </el-radio-group>
+      </el-form-item>
+      <el-form-item v-if="trainRadio!='自由座'" label="乘客人數">
+        <div>
+          全票
+          <el-select
+            v-model="people1"
+            placeholder="人數"
+            style="width: calc((100vw - 180px)/2)"
+          >
+            <el-option
+              v-for="item in people"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
+          孩童
+          <el-select
+            v-model="people2"
+            placeholder="人數"
+            style="width: calc((100vw - 180px)/2)"
+          >
+            <el-option
+              v-for="item in people"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
+        </div>
+        <div>
+          敬老
+          <el-select
+            v-model="people3"
+            placeholder="人數"
+            style="width: calc((100vw - 180px)/2)"
+          >
+            <el-option
+              v-for="item in people"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
+          愛心
+          <el-select
+            v-model="people4"
+            placeholder="人數"
+            style="width: calc((100vw - 180px)/2)"
+          >
+            <el-option
+              v-for="item in people"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
+        </div>
+        <div v-if="trainRadio=='標準'" class="mt-2">
+          大學生
+          <el-select
+            v-model="people5"
+            placeholder="人數"
+            style="width: calc((100vw - 210px)/2)"
+          >
+            <el-option
+              v-for="item in people"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
+        </div>
+      </el-form-item>
+    </el-form>
+    <div class="text-center">
+      <el-button
+        class="mt-2 px-5"
+        type="primary"
+        @click="$router.push({ name: '時刻車次'})"
+        >送出</el-button
+      >
+    </div>
+    <el-divider></el-divider>
+
+    <el-form label-position="right" label-width="80px">
+      <el-form-item label="注意事項">
+        <div>
+          1.
+          本系統提供預訂當日及未來28日以內之車票。訂位開放時間為乘車日(含)前28日凌晨0點開始，當日車次之預訂僅受理至列車出發時間前1小時為止(如因特殊事由調整開放時間，本公司將另行公告)。
+        </div>
+        <div>
+          2.
+          每筆交易至多可預訂10張票，不限身份，去回程至多可預訂各5張。購買孩童票之兒童乘車時，建議至少需有一位成人同行為宜。
+        </div>
+        <div>
+          3.
+          為維護您的權益，請於規定時間內完成付款。如未完成付款，本系統將自動取消訂位。
+        </div>
+        <div class="text-danger">
+          4.
+          座位喜好功能係依列車訂位概況媒合您期望的座位，如該車次已無合適座位時，為讓您仍可順利完成訂票作業，將由系統自動配置座位。座位喜好功能僅適用於單人乘客。
+        </div>
+        <div>
+          5. 身份說明：
+          <ul>
+            <li>
+              孩童票購票說明：未滿12歲之兒童得購買孩童票，身高未滿115公分之兒童不佔位得免票，但應由已購全票或成年旅客陪同，且每位旅客攜帶之免票孩童以2人為限。身高超過150公分且未滿12歲兒童，或身高超過115公分且未滿6歲兒童應出示身分證明。
+            </li>
+            <li>
+              敬老票購票說明：乘車當日年滿65歲(含)以上之中華民國國民，憑有效之身分證明文件得購買敬老票。
+            </li>
+            <li>
+              愛心票購票說明：持有身心障礙證明之中華民國國民得購買愛心票。（身心障礙證明背面之「必要陪伴者優惠措施」欄位註記有「國內大眾運輸工具」字樣者，始提供必要陪伴者一人愛心票優惠）。如同行陪伴者為外籍人士，乘客資訊請以身心障礙旅客之姓名及身份證字號登錄。本系統目前並無提供預訂無障礙座位，若您有預訂無障礙座位之需求時，請致電高鐵客戶服務專線：4066-3000（苗栗、台東、金門、馬祖地區及行動電話請撥02-4066-3000。國際來話請撥：+886-2-4066-3000。以上皆為付費電話，依一般市話及行動電話、國際電話費率標準計費。服務時間：06:00~24:00）或請至各車站售票窗口購票。
+            </li>
+            <li class="text-danger">
+              大學生優惠票購票說明：中華民國大專院校在學學生得購買指定車次標準車廂對號座5折起優惠車票。詳細規定請參閱高鐵企業網站大學生優惠專案網頁。乘車時應持本人有效學生證正本以備查驗，無本人有效證件者應照章補票並得加收票價差額百分之五十。
+            </li>
+          </ul>
+        </div>
+      </el-form-item>
+    </el-form>
+  </div>
+</div>
