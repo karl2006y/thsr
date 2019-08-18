@@ -5,18 +5,18 @@ export default {
     return {
       goback: false,
       loading: false,
-      typeRadio: "一般查詢列應",
+      typeRadio: "一般查詢列印",
       tabActiveName: "未使用車票",
       tickets: [
-        {
-          status: "未取票",
-          pic:
-            "https://lh6.googleusercontent.com/PSBXpZ68969Tdr7YGf2_9Xrt8HZRpEdqdEUMFsOP9Mh55iMc4iicbgu9V9ESO_pZ5f6ioV3PH6WWwlABoA8tYnsNeOAk0Vbm9LQ_YV8DSklOWOY1PXNwUrN4J913=w354"
-        },
         {
           status: "已取票",
           pic:
             "https://lh5.googleusercontent.com/Y334YbwE1BzsbMHVKdGPlTY2bnsRGlrg-h4w5_0S11VLBinxc9CaSrVRXbZwwIcXE_rCyk0ItkMemjUzVr6gMJc6DPMgzeUvTk31iAXjF2c8gSM94ssrLaQ5MEuh=w353"
+        },
+        {
+          status: "未取票",
+          pic:
+            "https://lh6.googleusercontent.com/PSBXpZ68969Tdr7YGf2_9Xrt8HZRpEdqdEUMFsOP9Mh55iMc4iicbgu9V9ESO_pZ5f6ioV3PH6WWwlABoA8tYnsNeOAk0Vbm9LQ_YV8DSklOWOY1PXNwUrN4J913=w354"
         },
         {
           status: "已取票",
@@ -28,6 +28,9 @@ export default {
   },
   mounted() {
     document.querySelector(".el-page-header__left").style.marginLeft = "25px";
+    if (this.$route.params.focusTab != undefined) {
+      this.tabActiveName = this.$route.params.focusTab;
+    }
   },
   methods: {
     gobackHandler() {

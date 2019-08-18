@@ -18,10 +18,10 @@
     </div>
     <!-- 上面tab -->
   </el-page-header>
-  <el-divider></el-divider>
-
+  <p></p>
+  <p></p>
   <div class="ml-2 mr-3 mt-2">
-    <el-form label-position="right" label-width="80px">
+    <el-form label-position="left" label-width="80px" size="mini">
       <el-form-item label="起訖車站">
         <el-select
           v-model="value"
@@ -51,12 +51,14 @@
           </el-option>
         </el-select>
       </el-form-item>
+      <el-divider style="margin:8px 0"></el-divider>
       <el-form-item label="去/回程">
         <el-radio-group v-model="goBackRadio" class="mt-1">
           <el-radio-button label="單程票"></el-radio-button>
           <el-radio-button label="去回票"></el-radio-button>
         </el-radio-group>
       </el-form-item>
+      <el-divider></el-divider>
       <el-form-item label="車廂種類">
         <el-radio-group v-model="trainRadio" class="mt-1">
           <el-radio-button label="標準"></el-radio-button>
@@ -64,13 +66,22 @@
           <el-radio-button label="自由座"></el-radio-button>
         </el-radio-group>
       </el-form-item>
+      <el-divider></el-divider>
+
       <el-form-item label="座位喜好">
         <el-radio-group v-model="seatRadio" class="mt-1">
           <el-radio-button label="無"></el-radio-button>
-          <el-radio-button label="請選擇"></el-radio-button>
+          <el-radio-button label="靠窗"></el-radio-button>
+          <el-radio-button label="靠走道"></el-radio-button>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-if="trainRadio!='自由座'" label="乘客人數">
+      <el-divider></el-divider>
+
+      <el-form-item v-if="trainRadio!='自由座'">
+        <div slot="label" style="height:100px">
+          <span class="m-5"></span>
+          <span class="align-middle">乘客人數</span>
+        </div>
         <div>
           全票
           <el-select
@@ -148,18 +159,19 @@
           </el-select>
         </div>
       </el-form-item>
+      <el-divider></el-divider>
     </el-form>
     <div class="text-center">
       <el-button
         class="mt-2 px-5"
         type="primary"
         @click="$router.push({ name: '時刻車次'})"
-        >送出</el-button
+      >
+        查詢</el-button
       >
     </div>
-    <el-divider></el-divider>
 
-    <el-form label-position="right" label-width="80px">
+    <!-- <el-form label-position="right" label-width="80px">
       <el-form-item label="注意事項">
         <div>
           1.
@@ -195,6 +207,6 @@
           </ul>
         </div>
       </el-form-item>
-    </el-form>
+    </el-form> -->
   </div>
 </div>

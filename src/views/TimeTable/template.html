@@ -2,6 +2,47 @@
   class="timeTable animated fast mb-1"
   :class="goback?'fadeOutRight':'slideInRight'"
 >
+  <el-dialog
+    :visible.sync="dialogVisible"
+    width="80%"
+    :modal="false"
+    custom-class="rounded-circle"
+    style="background-color: #8080807d"
+  >
+    <div
+      class="w-100 "
+      style="background-image:url( 'https://lh5.googleusercontent.com/Zjz5R-GUZlr9d-pQlNrBDLjwSSx7KrdjDXFRg3QR81a_esblEKrZjeBIQI4awk3Y9Ec4uQE7hzHvL6EJH7g5Ro6bEomRzJQqx-sDUfRTUMoQ_E_WENc2tqLTf1ak=w483 ' );background-position:center;background-size:contain;background-repeat:no-repeat	;height:270px;"
+    >
+      <div style="padding:50px 10px 0px 90px;font-size: 1.5rem">
+        {{ dialogVal }}
+      </div>
+      <div
+        v-if="dialogVal!='訂票成功'"
+        class="text-center"
+        style="padding-top: 80px"
+      >
+        <el-button
+          class="px-5"
+          type="primary"
+          @click="dialogVisible=false;dialogVal='訂票成功';dialogVisible=true;"
+          >確定</el-button
+        >
+        <el-button class="px-5" type="primary" @click="dialogVisible=false;"
+          >取消</el-button
+        >
+      </div>
+      <div
+        v-if="dialogVal=='訂票成功'"
+        class="text-center"
+        style="padding-top: 90px"
+      >
+        <el-button class="px-5" type="primary" @click="dialogVisible=false;"
+          >確定</el-button
+        >
+      </div>
+    </div>
+  </el-dialog>
+
   <div style="min-height: calc(100vh - 100px); ">
     <el-page-header
       @back="gobackHandler()"
@@ -19,7 +60,7 @@
       <!-- 上面tab -->
     </el-page-header>
     <el-table :data="tableData" style="width: 100vw">
-      <el-table-column prop="delay" label="訂票">
+      <el-table-column prop="delay" label="訂票" width="66">
         <template slot-scope="scope">
           <el-button
             size="mini"
@@ -28,18 +69,25 @@
             @click="alertDelay(scope.row.trainNum)"
             >訂票</el-button
           >
-          <el-button size="mini" type="primary" v-else>訂票</el-button>
+          <el-button
+            size="mini"
+            type="primary"
+            v-else
+            @click="dialogVal='訂票成功';dialogVisible = true;"
+            >訂票</el-button
+          >
         </template>
       </el-table-column>
-      <el-table-column prop="trainNum" label="車次"> </el-table-column>
-      <el-table-column prop="start" label="桃園"> </el-table-column>
-      <el-table-column prop="end" label="台中"> </el-table-column>
-      <el-table-column prop="delay">
+      <el-table-column prop="trainNum" label="車次" width="50">
+      </el-table-column>
+      <el-table-column prop="start" label="桃園" width="56"> </el-table-column>
+      <el-table-column prop="end" label="台中" width="56"> </el-table-column>
+      <el-table-column prop="delay" width="56">
         <template slot="header" slot-scope="scope">
-          <div class="text-danger">延誤</div>
+          <span class="text-danger ">延誤</span>
         </template>
         <template slot-scope="scope">
-          <div class="text-danger ml-2">{{ scope.row.delay }}</div>
+          <div class="text-danger">{{ scope.row.delay }}</div>
         </template>
       </el-table-column>
       <el-table-column prop="alltime" label="行車時間"> </el-table-column>

@@ -5,6 +5,8 @@ export default {
     return {
       goback: false,
       loading: false,
+      dialogVisible: false,
+      dialogVal: "",
       tableData: [
         {
           trainNum: "661",
@@ -37,6 +39,16 @@ export default {
       ]
     };
   },
+  watch: {
+    dialogVisible(val) {
+      if (val) {
+        this.$nextTick(function() {
+          document.querySelector(".el-dialog__header").style.padding = 0;
+          document.querySelector(".el-dialog__body").style.padding = 0;
+        });
+      }
+    }
+  },
   mounted() {
     document.querySelector(".el-page-header__left").style.marginLeft = "25px";
   },
@@ -48,7 +60,8 @@ export default {
       }, 500);
     },
     alertDelay(trainNum) {
-      window.alert(trainNum + "車次將延誤，是否訂購此車票");
+      this.dialogVisible = true;
+      this.dialogVal = trainNum + "車次將延誤　是否訂購此車票";
     }
   }
 };

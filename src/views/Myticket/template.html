@@ -31,9 +31,9 @@
       <div class="text-right mr-4">共 {{ tickets.length }} 張車票</div>
       <div v-for="item in tickets">
         <span
-          class="rounded-circle px-2 "
+          class="rounded-circle "
           :class="item.status=='未取票'?'bg-danger':'bg-success'"
-          style="width: 15px;height:15px "
+          style="padding-left:9px !important;padding-right:9px !important;"
         >
         </span>
         <div class="ml-1 d-inline">{{ item.status }}</div>
@@ -68,7 +68,7 @@
     <el-tab-pane label="購票證明" name="購票證明">
       <div class="ml-2 mr-4">
         <el-radio-group v-model="typeRadio" class="mt-1">
-          <el-radio-button label="一般查詢列應"></el-radio-button>
+          <el-radio-button label="一般查詢列印"></el-radio-button>
           <el-radio-button label="電子車票證明"></el-radio-button>
         </el-radio-group>
         <el-input>
