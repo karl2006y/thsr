@@ -59,8 +59,13 @@
       </div>
       <!-- 上面tab -->
     </el-page-header>
-    <el-table :data="tableData" style="width: 100vw">
-      <el-table-column prop="delay" label="訂票" width="66">
+    <el-table class="ml-2" :data="tableData" style="width: 100vw">
+      <el-table-column
+        v-if="$route.params.justSearch==undefined"
+        prop="delay"
+        label="訂票"
+        width="66"
+      >
         <template slot-scope="scope">
           <el-button
             size="mini"

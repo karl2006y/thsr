@@ -9,6 +9,11 @@ export default {
       tabActiveName: "未使用車票",
       tickets: [
         {
+          status: "延誤",
+          pic:
+            "https://lh6.googleusercontent.com/P-FQ4ueU_Tp9hzZFMENFCrVnaqyAJM_W507N-MvagBwfZ2T1dPtoTStjsXszM3IGpsR-bWzKMYldCQM7B2cHs-A6TMKpR810DpfOo_KG76VoMNIMlD74gR0_M1qE=w552"
+        },
+        {
           status: "已取票",
           pic:
             "https://lh5.googleusercontent.com/Y334YbwE1BzsbMHVKdGPlTY2bnsRGlrg-h4w5_0S11VLBinxc9CaSrVRXbZwwIcXE_rCyk0ItkMemjUzVr6gMJc6DPMgzeUvTk31iAXjF2c8gSM94ssrLaQ5MEuh=w353"

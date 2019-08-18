@@ -18,28 +18,36 @@
     </div>
     <!-- 上面tab -->
   </el-page-header>
-  <el-tabs v-model="tabActiveName" class="ml-2">
-    <el-tab-pane label="未使用車票" name="未使用車票">
-      <div class="text-right mr-4">共 {{ tickets.length }} 張車票</div>
-      <el-image
-        v-for="item in tickets"
-        class="border my-2"
-        :src="item.pic"
-      ></el-image>
+  <el-tabs v-model="tabActiveName" class="">
+    <el-tab-pane label="　未使用車票" name="未使用車票">
+      <div class="ml-2">
+        <div class="text-right mr-4">共 {{ tickets.length }} 張車票</div>
+        <div v-for="item in tickets">
+          <el-image class="border my-2" :src="item.pic"></el-image>
+          <div v-if="item.status=='延誤'" class="text-right mr-3">
+            <el-button class="px-3 " type="primary">退票</el-button>
+          </div>
+          <hr />
+        </div>
+      </div>
     </el-tab-pane>
     <el-tab-pane label="歷史紀錄" name="歷史紀錄">
-      <div class="text-right mr-4">共 {{ tickets.length }} 張車票</div>
-      <div v-for="item in tickets">
-        <span
-          class="rounded-circle "
-          :class="item.status=='未取票'?'bg-danger':'bg-success'"
-          style="padding-left:9px !important;padding-right:9px !important;"
-        >
-        </span>
-        <div class="ml-1 d-inline">{{ item.status }}</div>
+      <div class="ml-2">
+        <div class="text-right mr-4">
+          共 {{ tickets.filter((item)=>item.status!='延誤').length }} 張車票
+        </div>
+        <div v-for="item in tickets.filter((item)=>item.status!='延誤')">
+          <span
+            class="rounded-circle "
+            :class="item.status=='未取票'?'bg-danger':'bg-success'"
+            style="padding-left:9px !important;padding-right:9px !important;"
+          >
+          </span>
+          <div class="ml-1 d-inline">{{ item.status }}</div>
 
-        <el-image class="border my-2" :src="item.pic"></el-image>
-        <el-divider></el-divider>
+          <el-image class="border my-2" :src="item.pic"></el-image>
+          <hr />
+        </div>
       </div>
     </el-tab-pane>
     <el-tab-pane label="擷取紀錄" name="擷取紀錄">
@@ -49,10 +57,19 @@
             <el-input></el-input>
             <a href="javascript:;">忘記訂位代號</a>
           </el-form-item>
+          <hr />
           <el-form-item label="身分證字號或護照後四碼">
             <el-input></el-input>
           </el-form-item>
-          <el-form-item label="功能說明">
+        </el-form>
+      </div>
+      <div class="text-center mb-1">
+        <el-button class="px-5" type="primary">送出</el-button>
+      </div>
+      <div class="p-3" style="width: 100vw;background-color: #6666664d">
+        <el-form label-position="top">
+          <el-form-item>
+            <div slot="label" style="color:black">功能說明</div>
             <div>
               本功能可將高鐵網站、語音訂位紀錄擷取
               至手機上付款或取票,請輸入您的訂位代
@@ -60,9 +77,6 @@
             </div>
           </el-form-item>
         </el-form>
-        <div class="text-center">
-          <el-button class="px-5" type="primary">送出</el-button>
-        </div>
       </div>
     </el-tab-pane>
     <el-tab-pane label="購票證明" name="購票證明">
@@ -81,8 +95,14 @@
             >電子郵件</template
           >
         </el-input>
+      </div>
+      <div class="text-center mb-2">
+        <el-button class="mt-2 px-5" type="primary">送出</el-button>
+      </div>
+      <div class="p-3" style="width: 100vw;background-color: #6666664d">
         <el-form label-position="top">
-          <el-form-item label="功能說明">
+          <el-form-item>
+            <div slot="label" style="color:black">功能說明</div>
             <div>
               1.「一般查詢列印」提供手機票證自開票日次
               日至乘車日起一年內之購票證明。
@@ -97,9 +117,6 @@
             </div>
           </el-form-item>
         </el-form>
-        <div class="text-center">
-          <el-button class="mt-2 px-5" type="primary">送出</el-button>
-        </div>
       </div>
     </el-tab-pane>
   </el-tabs>
