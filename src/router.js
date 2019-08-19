@@ -34,6 +34,12 @@ export default new Router({
       name: '時刻車次',
       component: () =>
         import(/* webpackChunkName: "about" */ './views/TimeTable/index.vue')
+    },
+    {
+      path: '/memberpage',
+      name: '會員專區',
+      component: () =>
+        import(/* webpackChunkName: "about" */ './views/MemberPage/index.vue')
     }
   ]
 })

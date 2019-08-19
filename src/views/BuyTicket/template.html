@@ -21,7 +21,7 @@
   <p></p>
   <p></p>
   <div class="ml-3 mr-3 mt-2">
-    <el-form label-position="left" label-width="100px" size="mini">
+    <el-form label-position="left" label-width="80px" size="mini">
       <el-form-item label="起訖車站">
         <el-select
           v-model="value"
@@ -66,16 +66,16 @@
           <el-radio-button label="自由座"></el-radio-button>
         </el-radio-group>
       </el-form-item>
-      <el-divider></el-divider>
+      <el-divider v-if="trainRadio!='自由座'"></el-divider>
 
-      <el-form-item label="座位喜好">
+      <el-form-item v-if="trainRadio!='自由座'" label="座位喜好">
         <el-radio-group v-model="seatRadio" class="mt-1">
           <el-radio-button label="無"></el-radio-button>
           <el-radio-button label="靠窗"></el-radio-button>
           <el-radio-button label="靠走道"></el-radio-button>
         </el-radio-group>
       </el-form-item>
-      <el-divider></el-divider>
+      <el-divider v-if="trainRadio!='自由座'"></el-divider>
 
       <el-form-item v-if="trainRadio!='自由座'">
         <div slot="label" style="height:100px">
@@ -85,11 +85,7 @@
         </div>
         <div>
           全票
-          <el-select
-            v-model="people1"
-            placeholder="人數"
-            style="width: calc((100vw - 200px)/2)"
-          >
+          <el-select v-model="people1" placeholder="人數" class="peopleselect">
             <el-option
               v-for="item in people"
               :key="item.value"
@@ -99,11 +95,7 @@
             </el-option>
           </el-select>
           孩童
-          <el-select
-            v-model="people2"
-            placeholder="人數"
-            style="width: calc((100vw - 200px)/2)"
-          >
+          <el-select v-model="people2" placeholder="人數" class="peopleselect">
             <el-option
               v-for="item in people"
               :key="item.value"
@@ -115,11 +107,7 @@
         </div>
         <div class="mt-2">
           敬老
-          <el-select
-            v-model="people3"
-            placeholder="人數"
-            style="width: calc((100vw - 200px)/2)"
-          >
+          <el-select v-model="people3" placeholder="人數" class="peopleselect">
             <el-option
               v-for="item in people"
               :key="item.value"
@@ -129,11 +117,7 @@
             </el-option>
           </el-select>
           愛心
-          <el-select
-            v-model="people4"
-            placeholder="人數"
-            style="width: calc((100vw - 200px)/2)"
-          >
+          <el-select v-model="people4" placeholder="人數" class="peopleselect">
             <el-option
               v-for="item in people"
               :key="item.value"
@@ -148,7 +132,7 @@
           <el-select
             v-model="people5"
             placeholder="人數"
-            style="width: calc((100vw - 230px)/2)"
+            style="width: calc((100vw - 40px)/2)"
           >
             <el-option
               v-for="item in people"

@@ -267,13 +267,15 @@
         </div>
       </el-col>
       <el-col :span="8">
-        <buttonmain
-          style="padding-top:6px;padding-bottom:18px"
-          class="border-right border-left border-white pl-3"
-          ph="15px;width: 35px;padding-right:8px;margin-top:12px"
-          name="會員專區"
-          pic="https://lh3.googleusercontent.com/U1D4sl5M54l5PTfL-alAp7U24eDX2oNubEKgawlZ193wfNuap6KccuzlJBjz0XEBWWFDcb2lSJVVs5EF_qN3PvF09GWIFJ70H95AsVatkoY4aY8umvkkFFjtVRK1=w69"
-        ></buttonmain>
+        <div @click="$router.push({ name: '會員專區'})">
+          <buttonmain
+            style="padding-top:6px;padding-bottom:18px"
+            class="border-right border-left border-white pl-3"
+            ph="15px;width: 35px;padding-right:8px;margin-top:12px"
+            name="會員專區"
+            pic="https://lh3.googleusercontent.com/U1D4sl5M54l5PTfL-alAp7U24eDX2oNubEKgawlZ193wfNuap6KccuzlJBjz0XEBWWFDcb2lSJVVs5EF_qN3PvF09GWIFJ70H95AsVatkoY4aY8umvkkFFjtVRK1=w69"
+          ></buttonmain>
+        </div>
       </el-col>
       <el-col :span="7" :offset="1">
         <div @click="$router.push({ name: '我的車票'})">

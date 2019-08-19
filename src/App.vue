@@ -3,12 +3,14 @@
     <router-view></router-view>
     <!-- 最上面的navbar -->
     <div
-      class="text-center text-white py-1"
+      class="text-center text-white p-1"
       style=" background-color: #444444"
     >
       <small>
-        台灣高速鐵路股份有限公司 版權所有 © Taiwan High Speed Rail Corporation.
-        All Rights Reserved.
+        <div @click="buttoncli()">
+          台灣高速鐵路股份有限公司 版權所有 © Taiwan High Speed Rail Corporation.
+          All Rights Reserved.
+        </div>
       </small>
     </div>
   </div>
@@ -34,9 +36,6 @@ export default {
         type: "success"
       });
     }
-  },
-  mounted() {
-    this.buttoncli();
   }
 };
 </script>

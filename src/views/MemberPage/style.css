@@ -1,0 +1,14 @@
+.backPic {
+  background-image: url('https://lh3.googleusercontent.com/Hpb5PUBmJkYvtpBSjrfGSgesXHHa8cwWwDPW8goHh0WjIvhrW19xg7WYa26waK6-z7JycuDw01qs13yD4ozY3Kou3AtYfV4NdmPOyVJEEOZtzaoJdNmm_GeiS4II=w744 ');
+  background-position: center;
+  background-size: 105vw calc(100vh - 125px);
+  /* background-size: cover; */
+  background-repeat: no-repeat;
+  background-color: #f1f1f1;
+}
+.title {
+  background-color: #f1f1f1;
+  padding: 15px;
+  color: #afafaf;
+  font-size: 1.4rem;
+}

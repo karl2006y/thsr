@@ -3,3 +3,6 @@
 .el-divider--horizontal {
   margin: 8px 0;
 }
+.peopleselect {
+  width: calc((100vw - 230px) / 2);
+}

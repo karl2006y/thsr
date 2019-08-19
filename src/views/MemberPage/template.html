@@ -1,0 +1,23 @@
+<div
+  class="memberPage  animated fast "
+  :class="goback?'fadeOutRight':'slideInRight'"
+>
+  <el-page-header
+    @back="gobackHandler()"
+    class="text-white"
+    style="height: 62px;background-color: #444444;"
+  >
+    <div slot="title"></div>
+    <div
+      slot="content"
+      class="text-white text-center "
+      style="padding-top: 20px"
+    >
+      會員專區
+    </div>
+    <!-- 上面tab -->
+  </el-page-header>
+  <div class="text-left title">貴賓 您好</div>
+
+  <div class="backPic" style="min-height: calc(100vh - 116px); "></div>
+</div>
