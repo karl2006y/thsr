@@ -18,15 +18,50 @@
     </div>
     <!-- 上面tab -->
   </el-page-header>
+  <el-dialog
+    title="車次查詢"
+    :visible.sync="dialogVisible"
+    width="80%"
+    :modal="false"
+    style="background-color:#80808091"
+  >
+    <div slot="title">
+      <i class="el-icon-s-ticket"> 車次查詢</i>
+    </div>
+    <div class="p-2" v-loading="dialogVisible"></div>
+    <p></p>
+    <div class="text-center">
+      <span>正在為您搜尋最快的車次</span>
+    </div>
+  </el-dialog>
   <p></p>
   <p></p>
   <div class="ml-3 mr-3 mt-2">
     <el-form label-position="left" label-width="80px" size="mini">
+      <el-form-item label="乘車日期">
+        <el-date-picker
+          v-model="timeVal"
+          type="date"
+          placeholder="請選擇乘車日期"
+        >
+        </el-date-picker>
+      </el-form-item>
+      <el-form-item label="乘車時間">
+        <el-time-picker
+          v-model="timeVal"
+          type="date"
+          placeholder="請選擇乘車時間"
+        >
+        </el-time-picker>
+      </el-form-item>
+      <el-divider></el-divider>
+
       <el-form-item label="起訖車站">
         <el-select
           v-model="value"
           placeholder="起站"
-          style="width: calc((100vw - 150px)/2)"
+          class="stationselect"
+          @change="value2=''"
         >
           <el-option
             v-for="item in options"
@@ -37,12 +72,9 @@
           </el-option>
         </el-select>
         →
-        <el-select
-          v-model="value2"
-          placeholder="訖站"
-          style="width: calc((100vw - 150px)/2)"
-        >
+        <el-select v-model="value2" placeholder="訖站" class="stationselect">
           <el-option
+            v-if="item.value!=value"
             v-for="item in options"
             :key="item.value"
             :label="item.label"
@@ -148,12 +180,14 @@
     </el-form>
     <div class="text-center">
       <el-button
+        :disabled="!canSent"
         class="mt-2 px-5"
         type="primary"
-        @click="$router.push({ name: '時刻車次'})"
+        @click="dialogVisible=true"
       >
         查詢</el-button
-      >
+      ><br />
+      <small v-if="!canSent" class="text-danger">*資料尚未填妥無法查詢</small>
     </div>
 
     <!-- <el-form label-position="right" label-width="80px">

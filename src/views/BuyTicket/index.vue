@@ -5,6 +5,8 @@ export default {
     return {
       goback: false,
       loading: false,
+      dialogVisible: false,
+      timeVal: new Date(),
       people: [
         {
           value: "1",
@@ -44,6 +46,38 @@ export default {
       people4: "",
       people5: ""
     };
+  },
+  computed: {
+    canSent() {
+      let people = false;
+      if (
+        this.people1 == "" &&
+        this.people2 == "" &&
+        this.people3 == "" &&
+        this.people4 == "" &&
+        this.people5 == ""
+      ) {
+        if (this.trainRadio == "自由座") {
+          people = true;
+        } else {
+          people = false;
+        }
+      } else {
+        people = true;
+      }
+      return (
+        this.timeVal != "" && this.value != "" && this.value2 != "" && people
+      );
+    }
+  },
+  watch: {
+    dialogVisible(val) {
+      if (val) {
+        setTimeout(() => {
+          this.$router.push({ name: "時刻車次" });
+        }, 2000);
+      }
+    }
   },
   mounted() {
     document.querySelector(".el-page-header__left").style.marginLeft = "25px";

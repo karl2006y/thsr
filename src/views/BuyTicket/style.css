@@ -3,6 +3,9 @@
 .el-divider--horizontal {
   margin: 8px 0;
 }
+.stationselect {
+  width: calc((80% - 10px) / 2);
+}
 .peopleselect {
   width: calc((100vw - 230px) / 2);
 }
