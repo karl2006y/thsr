@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <router-view></router-view>
     <!-- 最上面的navbar -->
     <div
@@ -17,8 +16,28 @@
 </template>
 
 <script>
+import screenfull from "screenfull";
 export default {
-  name: "app"
+  name: "app",
+  methods: {
+    buttoncli() {
+      if (!screenfull.enabled) {
+        this.$message({
+          message: "不支援全螢幕顯示",
+          type: "warning"
+        });
+        return false;
+      }
+      screenfull.toggle();
+      this.$message({
+        message: "全螢幕顯示",
+        type: "success"
+      });
+    }
+  },
+  mounted() {
+    this.buttoncli();
+  }
 };
 </script>
 

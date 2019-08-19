@@ -59,6 +59,12 @@ export default {
         this.$router.go(-1);
       }, 500);
     },
+    goTicketsHandler() {
+      this.dialogVisible = false;
+      setTimeout(() => {
+        this.$router.push({ name: "我的車票" });
+      }, 500);
+    },
     alertDelay(trainNum) {
       this.dialogVisible = true;
       this.dialogVal = trainNum + "車次將延誤　是否訂購此車票";
