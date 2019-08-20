@@ -7,6 +7,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       setting: {
         lanRadio: "中文",
         fontSize: "適中"
@@ -94,10 +95,32 @@ export default {
       ]
     };
   },
+
   mounted() {
+    // this.dynamicLoadCss("./fontsize1.css");
     this.topInfoPicHeight = (document.body.clientWidth * 3) / 4;
+    const fs = localStorage.getItem("fontSize");
+    this.setting.fontSize = fs;
+    if (fs == "大") {
+      this.dynamicLoadCss("./fontsize1.css");
+    } else if (fs == "極大") {
+      this.dynamicLoadCss("./fontsize2.css");
+    }
   },
   methods: {
+    changefontSize() {
+      this.loading = true;
+      localStorage.setItem("fontSize", this.setting.fontSize);
+      this.$router.go(0);
+    },
+    dynamicLoadCss(url) {
+      var head = document.getElementsByTagName("head")[0];
+      var mycss = document.createElement("link");
+      mycss.type = "text/css";
+      mycss.rel = "stylesheet";
+      mycss.href = url;
+      head.appendChild(mycss);
+    },
     openLeftMenu() {
       console.log("open");
       this.$nextTick(function() {
@@ -113,4 +136,3 @@ export default {
 </script>
 
 <template src="./template.html"></template>
-<style lang="css" src="./style.css" scoped></style>

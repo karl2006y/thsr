@@ -150,6 +150,8 @@
       :visible.sync="innerDrawer"
       direction="ltr"
       size="100%"
+      v-loading="loading"
+      element-loading-text="字體大小切換中"
     >
       <div slot="title">
         <i class="el-icon-s-tools"></i>
@@ -157,21 +159,28 @@
       </div>
       <div class="ml-3 mr-2">
         <el-collapse>
-          <el-collapse-item title="變更語言" name="1">
+          <el-collapse-item name="1">
+            <div slot="title">變更語言</div>
             <el-radio-group v-model="setting.lanRadio" size="medium">
               <el-radio-button label="中文"></el-radio-button>
               <el-radio-button label="English"></el-radio-button>
               <el-radio-button label="にほんご"></el-radio-button>
             </el-radio-group>
           </el-collapse-item>
-          <el-collapse-item title="字體大小" name="2">
-            <el-radio-group v-model="setting.fontSize" size="medium">
+          <el-collapse-item name="2">
+            <div slot="title">字體大小</div>
+            <el-radio-group
+              @change="changefontSize()"
+              v-model="setting.fontSize"
+              size="medium"
+            >
               <el-radio-button label="極大"></el-radio-button>
               <el-radio-button label="大"></el-radio-button>
               <el-radio-button label="適中"></el-radio-button>
             </el-radio-group>
           </el-collapse-item>
-          <el-collapse-item title="使用說明" name="3">
+          <el-collapse-item name="3">
+            <div slot="title">使用說明</div>
             <el-form label-position="right" label-width="80px">
               <el-form-item label="注意事項">
                 <div>
@@ -193,9 +202,10 @@
               </el-form-item>
             </el-form>
           </el-collapse-item>
-          <el-collapse-item title="關於我們" name="4">
+          <el-collapse-item name="4">
+            <div slot="title">關於我們</div>
             <div>
-              about
+              認真的我們最美麗
             </div>
           </el-collapse-item>
         </el-collapse>
