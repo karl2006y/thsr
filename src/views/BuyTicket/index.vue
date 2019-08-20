@@ -93,11 +93,7 @@ export default {
         this.people4 == "" &&
         this.people5 == ""
       ) {
-        if (this.trainRadio == "自由座") {
-          people = true;
-        } else {
-          people = false;
-        }
+        people = false;
       } else {
         people = true;
       }
