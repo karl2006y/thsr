@@ -23,16 +23,52 @@ export default {
       ],
       options: [
         {
+          value: "南港",
+          label: "南港"
+        },
+        {
           value: "台北",
           label: "台北"
+        },
+        {
+          value: "板橋",
+          label: "板橋"
+        },
+        {
+          value: "桃園",
+          label: "桃園"
+        },
+        {
+          value: "新竹",
+          label: "新竹"
+        },
+        {
+          value: "苗栗",
+          label: "苗栗"
         },
         {
           value: "台中",
           label: "台中"
         },
         {
+          value: "彰化",
+          label: "彰化"
+        },
+        {
+          value: "雲林",
+          label: "雲林"
+        },
+        {
+          value: "嘉義",
+          label: "嘉義"
+        },
+        {
           value: "台南",
           label: "台南"
+        },
+        {
+          value: "左營",
+          label: "左營"
         }
       ],
       value: "",

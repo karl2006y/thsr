@@ -54,7 +54,7 @@
         >
         </el-time-picker>
       </el-form-item>
-      <el-divider></el-divider>
+      <hr />
 
       <el-form-item label="起訖車站">
         <el-select
@@ -90,7 +90,7 @@
           <el-radio-button label="去回票"></el-radio-button>
         </el-radio-group>
       </el-form-item>
-      <el-divider></el-divider>
+      <hr />
       <el-form-item label="車廂種類">
         <el-radio-group v-model="trainRadio" class="mt-1">
           <el-radio-button label="標準"></el-radio-button>
@@ -107,7 +107,7 @@
           <el-radio-button label="靠走道"></el-radio-button>
         </el-radio-group>
       </el-form-item>
-      <el-divider></el-divider>
+      <hr />
 
       <el-form-item>
         <div slot="label">
@@ -178,14 +178,15 @@
       </el-form-item>
     </el-form>
     <div class="footerButton">
-      <div class="text-center vw-100">
-        <el-button
+      <div class="text-center " style="width: 91vw">
+        <hr />
+        <button
+          style="background-color: #ed5306; color:#fff"
           :disabled="!canSent"
-          class="mt-2 px-5"
-          type="primary"
+          class="btn btn-block "
           @click="dialogVisible=true"
         >
-          查詢</el-button
+          查詢</button
         ><br />
         <small v-if="!canSent" class="text-danger">*資料尚未填妥無法查詢</small>
       </div>
