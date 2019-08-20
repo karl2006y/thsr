@@ -111,7 +111,7 @@ export default {
     changefontSize() {
       this.loading = true;
       localStorage.setItem("fontSize", this.setting.fontSize);
-      this.$router.go(0);
+      location.reload();
     },
     dynamicLoadCss(url) {
       var head = document.getElementsByTagName("head")[0];
