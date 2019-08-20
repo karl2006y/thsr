@@ -99,7 +99,10 @@ export default {
   mounted() {
     // this.dynamicLoadCss("./fontsize1.css");
     this.topInfoPicHeight = (document.body.clientWidth * 3) / 4;
-    const fs = localStorage.getItem("fontSize");
+    const fs =
+      localStorage.getItem("fontSize") != null
+        ? localStorage.getItem("fontSize")
+        : "適中";
     this.setting.fontSize = fs;
     if (fs == "大") {
       this.dynamicLoadCss("./fontsize1.css");
@@ -111,7 +114,9 @@ export default {
     changefontSize() {
       this.loading = true;
       localStorage.setItem("fontSize", this.setting.fontSize);
-      location.reload();
+      setTimeout(() => {
+        location.reload();
+      }, 500);
     },
     dynamicLoadCss(url) {
       var head = document.getElementsByTagName("head")[0];
