@@ -9,3 +9,7 @@
 .peopleselect {
   width: calc((100vw - 230px) / 2);
 }
+.footerButton {
+  position: absolute;
+  bottom: 5px;
+}

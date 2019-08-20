@@ -1,5 +1,5 @@
 <div
-  class="buyTicket animated fast mb-1"
+  class="buyTicket animated fast"
   :class="goback?'fadeOutRight':'slideInRight'"
   style="min-height: calc(100vh - 55px); "
 >
@@ -107,10 +107,10 @@
           <el-radio-button label="靠走道"></el-radio-button>
         </el-radio-group>
       </el-form-item>
-      <el-divider v-if="trainRadio!='自由座'"></el-divider>
+      <el-divider></el-divider>
 
-      <el-form-item v-if="trainRadio!='自由座'">
-        <div slot="label" style="height:100px">
+      <el-form-item>
+        <div slot="label">
           <p></p>
 
           <span>乘客人數</span>
@@ -176,18 +176,19 @@
           </el-select>
         </div>
       </el-form-item>
-      <el-divider></el-divider>
     </el-form>
-    <div class="text-center">
-      <el-button
-        :disabled="!canSent"
-        class="mt-2 px-5"
-        type="primary"
-        @click="dialogVisible=true"
-      >
-        查詢</el-button
-      ><br />
-      <small v-if="!canSent" class="text-danger">*資料尚未填妥無法查詢</small>
+    <div class="footerButton">
+      <div class="text-center vw-100">
+        <el-button
+          :disabled="!canSent"
+          class="mt-2 px-5"
+          type="primary"
+          @click="dialogVisible=true"
+        >
+          查詢</el-button
+        ><br />
+        <small v-if="!canSent" class="text-danger">*資料尚未填妥無法查詢</small>
+      </div>
     </div>
 
     <!-- <el-form label-position="right" label-width="80px">
