@@ -30,6 +30,14 @@ export default new Router({
         import(/* webpackChunkName: "about" */ './views/BuyTicket/index.vue')
     },
     {
+      path: '/searchtimetable',
+      name: '搜尋時刻車次',
+      component: () =>
+        import(
+          /* webpackChunkName: "about" */ './views/SearchTimeTable/index.vue'
+        )
+    },
+    {
       path: '/timetable',
       name: '時刻車次',
       component: () =>

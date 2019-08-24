@@ -41,6 +41,11 @@ export default {
 </script>
 
 <style>
+.dialogClass {
+  border-radius: 15% !important;
+  background-color: #fbe5d6 !important;
+  border: 0px #fbe5d6 solid !important;
+}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

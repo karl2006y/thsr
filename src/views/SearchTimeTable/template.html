@@ -1,0 +1,124 @@
+<div
+  class="searchTimeTable animated fast mb-1"
+  :class="goback?'fadeOutRight':'slideInRight'"
+  style="min-height: calc(100vh - 50px); "
+>
+  <el-dialog
+    title="車次查詢"
+    :visible.sync="searching"
+    width="80%"
+    :modal="false"
+    style="background-color:#80808091"
+  >
+    <div slot="title">
+      <i class="el-icon-s-ticket"> 車次查詢</i>
+    </div>
+    <div class="p-2" v-loading="searching"></div>
+    <p></p>
+    <div class="text-center">
+      <span>正在為您搜尋最快的車次</span>
+    </div>
+  </el-dialog>
+  <el-page-header
+    @back="gobackHandler()"
+    class="text-white"
+    style="height: 62px;background-color: #444444;"
+  >
+    <div slot="title"></div>
+    <div
+      slot="content"
+      class="text-white text-center "
+      style="padding-top: 20px"
+    >
+      我的車票
+    </div>
+    <!-- 上面tab -->
+  </el-page-header>
+  <div class="ml-3 mr-3 mt-4">
+    <el-form label-position="left" label-width="80px" size="mini">
+      <el-form-item label="乘車日期">
+        <el-date-picker
+          v-model="timeVal"
+          type="date"
+          placeholder="請選擇乘車日期"
+        >
+        </el-date-picker>
+      </el-form-item>
+      <el-form-item label="乘車時間">
+        <el-time-picker
+          v-model="timeVal"
+          type="date"
+          placeholder="請選擇乘車時間"
+        >
+        </el-time-picker>
+      </el-form-item>
+      <hr />
+
+      <el-form-item label="起訖車站" style="width:calc(100vw-80px);">
+        <el-select
+          v-model="value"
+          placeholder="起站"
+          class="stationselect"
+          @change="value2=''"
+        >
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          >
+          </el-option>
+        </el-select>
+        →
+        <el-select v-model="value2" placeholder="訖站" class="stationselect">
+          <el-option
+            v-if="item.value!=value"
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          >
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <el-divider style="margin:8px 0"></el-divider>
+      <el-form-item label="去/回程">
+        <el-radio-group v-model="goBackRadio" class="mt-1">
+          <el-radio-button label="單程票"></el-radio-button>
+          <el-radio-button label="去回票"></el-radio-button>
+        </el-radio-group>
+      </el-form-item>
+      <hr />
+      <el-form-item label="車廂種類">
+        <el-radio-group v-model="trainRadio" class="mt-1">
+          <el-radio-button label="標準"></el-radio-button>
+          <el-radio-button label="商務"></el-radio-button>
+          <el-radio-button label="自由座"></el-radio-button>
+        </el-radio-group>
+      </el-form-item>
+      <el-divider v-if="trainRadio!='自由座'"></el-divider>
+
+      <el-form-item v-if="trainRadio!='自由座'" label="座位喜好">
+        <el-radio-group v-model="seatRadio" class="mt-1">
+          <el-radio-button label="無"></el-radio-button>
+          <el-radio-button label="靠窗"></el-radio-button>
+          <el-radio-button label="靠走道"></el-radio-button>
+        </el-radio-group>
+      </el-form-item>
+    </el-form>
+    <div class="footerButton">
+      <div class="text-center " style="width: 91vw">
+        <hr />
+        <button
+          style="background-color: #ed5306; color:#fff"
+          :disabled="!canSent"
+          class="btn btn-block "
+          @click="searching=true"
+        >
+          查詢</button
+        ><br />
+        <small v-if="!canSent" class="text-danger">*資料尚未填妥無法查詢</small>
+      </div>
+    </div>
+  </div>
+</div>

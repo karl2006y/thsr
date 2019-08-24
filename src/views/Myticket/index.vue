@@ -44,6 +44,13 @@ export default {
         this.$router.go(-1);
       }, 500);
     }
+  },
+  beforeRouteLeave(to, from, next) {
+    if (to.name != "主頁") {
+      this.$router.push({ name: "主頁" });
+    } else {
+      next();
+    }
   }
 };
 </script>
